@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-import httpx
 import hishel
+import httpx
 
 _DEFAULT_CACHE_DIR: Path = Path.home() / ".cache" / "trailcast"
 
