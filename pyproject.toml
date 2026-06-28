@@ -29,10 +29,13 @@ dependencies = [
     "numpy>=1.26",
     "scipy>=1.12",
     "pandas>=2.2",
-    "tenacity>=8.2",
-    "diskcache>=5.6",
+    "stamina>=24.2",
+    "hishel>=0.0.30",
     "typer>=0.12",
     "pyet>=1.2",
+    "cdsapi>=0.7",
+    "xarray>=2024.1",
+    "netCDF4>=1.7",
 ]
 
 [project.optional-dependencies]
@@ -109,8 +112,6 @@ strict = true
 
 [[tool.mypy.overrides]]
 module = [
-    "diskcache",
-    "diskcache.*",
     "pyet",
     "pyet.*",
     "pysheds",
@@ -123,8 +124,8 @@ module = [
     "pyproj.*",
     "shapely",
     "shapely.*",
-    "tenacity",
-    "tenacity.*",
+    "cdsapi",
+    "cdsapi.*",
 ]
 ignore_missing_imports = true
 
