@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Predictive trail conditions for mountain biking — fuses weather, soil type, terrain geometry and ride-density signals to forecast rideability from a GPS polyline."
 readme = "README.md"
 license = { file = "LICENSE" }
-requires-python = ">=3.11"
+requires-python = ">=3.11,<3.14"
 authors = [{ name = "Joe Heffer", email = "jheffer@gmail.com" }]
 keywords = ["mountain-biking", "trail-conditions", "weather", "forecast", "gps"]
 classifiers = [
@@ -44,7 +44,7 @@ dependencies = [
 #   pip install xarray-spatial
 # pysheds requires rasterio (GDAL). On Linux: apt-get install libgdal-dev
 terrain-full = [
-    "richdem>=2.3",
+    "richdem>=0.3",
     "pysheds>=0.4",
 ]
 
