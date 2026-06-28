@@ -48,6 +48,7 @@ forecast to stdout.
 
 ### `cache/`
 
-`diskcache`-backed caching layer for slow or rate-limited API responses
-(primarily SoilGrids, which changes rarely). Default cache dir:
-`~/.cache/trailcast/`.
+`hishel`-backed caching layer for slow or rate-limited API responses
+(primarily SoilGrids, which changes rarely). Wraps an `httpx.AsyncClient`
+via a transport layer, so caching is transparent to the callers. Default
+cache dir: `~/.cache/trailcast/`.

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from trailcast.models import LatLon, TerrainResult
+
 try:
     import richdem  # noqa: F401
 
@@ -10,16 +12,12 @@ except ImportError:
 
 
 class TerrainAnalyzer:
-    """Computes terrain attributes (TWI, aspect, slope) from a GPS bounding box."""
+    """Computes terrain attributes (TWI, slope, aspect) from a GPS polyline."""
 
-    def compute_twi(self, lat: float, lon: float) -> float:
-        """Return the topographic wetness index at (lat, lon)."""
-        raise NotImplementedError
+    def compute_terrain(self, polyline: list[LatLon]) -> TerrainResult:
+        """Return aggregated terrain attributes for the full trail polyline.
 
-    def compute_aspect(self, lat: float, lon: float) -> str:
-        """Return the dominant aspect as a compass direction (e.g. 'NW')."""
-        raise NotImplementedError
-
-    def compute_slope(self, lat: float, lon: float) -> float:
-        """Return the slope in degrees at (lat, lon)."""
+        Fetches the DEM once for the polyline's bounding box, then derives
+        dominant aspect, mean slope (degrees), and mean TWI across all points.
+        """
         raise NotImplementedError
