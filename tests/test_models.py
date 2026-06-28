@@ -1,6 +1,10 @@
 from datetime import UTC, datetime
 
+import pytest
+from pydantic import ValidationError
+
 from trailcast.models import ConditionsForecast, TrailInput
+from tests.fixtures.peak_district_polyline import PEAK_DISTRICT_POLYLINE
 
 
 def test_trail_input_validates(trail_input: TrailInput) -> None:
@@ -10,9 +14,9 @@ def test_trail_input_validates(trail_input: TrailInput) -> None:
     assert len(trail_input.gpx_polyline) == 12
 
 
-def test_conditions_forecast_validates() -> None:
+def test_conditions_forecast_validates(trail_input: TrailInput) -> None:
     forecast = ConditionsForecast(
-        trail_name="Mam Tor Loop",
+        trail=trail_input,
         rideability="good",
         confidence=0.85,
         forecast_hours=48,
@@ -23,3 +27,17 @@ def test_conditions_forecast_validates() -> None:
     assert forecast.rideability == "good"
     assert 0.0 <= forecast.confidence <= 1.0
     assert forecast.forecast_hours == 48
+    assert forecast.trail.name == "Mam Tor Loop"
+
+
+def test_conditions_forecast_rejects_naive_datetime(trail_input: TrailInput) -> None:
+    with pytest.raises(ValidationError, match="timezone-aware"):
+        ConditionsForecast(
+            trail=trail_input,
+            rideability="good",
+            confidence=0.85,
+            forecast_hours=48,
+            dominant_aspect="NW",
+            notes=[],
+            generated_at=datetime.now(),  # naive — no tz
+        )

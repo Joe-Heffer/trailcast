@@ -3,6 +3,16 @@ from __future__ import annotations
 import os
 
 import httpx
+from pydantic import BaseModel, ConfigDict
+
+
+class ERA5Reanalysis(BaseModel):
+    """Parsed response from the Copernicus CDS ERA5 reanalysis endpoint."""
+
+    model_config = ConfigDict(extra="ignore")
+
+    accumulated_precipitation_mm: float  # mm over the analysis period
+    mean_temperature_c: float  # °C
 
 
 class ERA5Client:
@@ -21,6 +31,6 @@ class ERA5Client:
         self._api_key = api_key or os.environ.get("CDS_API_KEY")
         self._client = client
 
-    async def fetch_reanalysis(self, lat: float, lon: float) -> dict[str, object]:
+    async def fetch_reanalysis(self, lat: float, lon: float) -> ERA5Reanalysis:
         """Fetch historical weather reanalysis data at (lat, lon)."""
         raise NotImplementedError
