@@ -1,3 +1,5 @@
+[![CI](https://github.com/Joe-Heffer/trailcast/actions/workflows/ci.yml/badge.svg)](https://github.com/Joe-Heffer/trailcast/actions/workflows/ci.yml)
+
 # trailcast
 
 **Predictive trail conditions for mountain biking.** `trailcast` fuses weather forecasts, soil type, terrain geometry (slope, aspect, TWI), and ride-density signals to produce a rideability forecast from a GPS polyline. Open-source infrastructure for local clubs, trail associations, and MTB apps.
