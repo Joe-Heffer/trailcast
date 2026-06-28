@@ -1,4 +1,5 @@
 [![CI](https://github.com/Joe-Heffer/trailcast/actions/workflows/ci.yml/badge.svg)](https://github.com/Joe-Heffer/trailcast/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/Joe-Heffer/trailcast/branch/main/graph/badge.svg)](https://codecov.io/gh/Joe-Heffer/trailcast)
 
 # trailcast
 
