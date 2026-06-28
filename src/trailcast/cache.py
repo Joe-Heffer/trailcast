@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import httpx
 import hishel
 
 _DEFAULT_CACHE_DIR: Path = Path.home() / ".cache" / "trailcast"
@@ -18,8 +19,8 @@ def make_cache_transport(
     """
     cache_dir = directory if directory is not None else _DEFAULT_CACHE_DIR
     cache_dir.mkdir(parents=True, exist_ok=True)
-    storage = hishel.FileStorage(base_path=cache_dir)
+    storage = hishel.AsyncFileStorage(base_path=cache_dir)
     return hishel.AsyncCacheTransport(
-        transport=hishel.AsyncHTTPTransport(),
+        transport=httpx.AsyncHTTPTransport(),
         storage=storage,
     )
