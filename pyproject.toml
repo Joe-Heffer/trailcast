@@ -47,6 +47,10 @@ terrain-full = [
     "richdem>=0.3",
     "pysheds>=0.4",
 ]
+server = [
+    "fastapi>=0.111",
+    "uvicorn[standard]>=0.29",
+]
 
 [project.scripts]
 trailcast = "trailcast.cli.main:app"
@@ -78,6 +82,8 @@ dependencies = [
     "pytest-httpx>=0.30",
     "hypothesis>=6.100",
     "pytest-asyncio>=0.23",
+    "fastapi>=0.111",
+    "httpx[http2]>=0.27",
 ]
 
 [tool.hatch.envs.test.scripts]
@@ -88,6 +94,7 @@ dependencies = [
     "ruff>=0.4",
     "mypy>=1.9",
     "pandas-stubs>=2.2",
+    "fastapi>=0.111",
 ]
 
 [tool.hatch.envs.lint.scripts]
@@ -126,6 +133,8 @@ module = [
     "shapely.*",
     "cdsapi",
     "cdsapi.*",
+    "uvicorn",
+    "uvicorn.*",
 ]
 ignore_missing_imports = true
 

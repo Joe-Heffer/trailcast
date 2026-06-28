@@ -35,5 +35,24 @@ def forecast(
     raise NotImplementedError("Forecast engine not yet implemented.")
 
 
+@app.command()
+def serve(
+    host: str = typer.Option("0.0.0.0", "--host", help="Bind address."),
+    port: int = typer.Option(8000, "--port", "-p", help="Port to listen on."),
+    reload: bool = typer.Option(False, "--reload", help="Enable auto-reload (development only)."),
+) -> None:
+    """Start the trailcast HTTP server.
+
+    Requires the [server] extra:  pip install trailcast[server]
+    """
+    try:
+        import uvicorn
+    except ImportError:
+        typer.echo("uvicorn is not installed. Run: pip install trailcast[server]", err=True)
+        raise typer.Exit(code=1)
+
+    uvicorn.run("trailcast.server:app", host=host, port=port, reload=reload)
+
+
 if __name__ == "__main__":
     app()
