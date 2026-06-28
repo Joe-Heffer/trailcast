@@ -4,7 +4,6 @@ import pytest
 from pydantic import ValidationError
 
 from trailcast.models import ConditionsForecast, TrailInput
-from tests.fixtures.peak_district_polyline import PEAK_DISTRICT_POLYLINE
 
 
 def test_trail_input_validates(trail_input: TrailInput) -> None:
