@@ -3,7 +3,7 @@ from datetime import UTC, datetime
 import pytest
 from pydantic import ValidationError
 
-from trailcast.models import ConditionsForecast, TrailInput
+from trailcast.models import ConditionsForecast, RideTelemetry, TrailInput
 
 
 def test_trail_input_validates(trail_input: TrailInput) -> None:
@@ -39,4 +39,23 @@ def test_conditions_forecast_rejects_naive_datetime(trail_input: TrailInput) -> 
             dominant_aspect="NW",
             notes=[],
             generated_at=datetime.now(),  # naive — no tz
+        )
+
+
+def test_ride_telemetry_validates() -> None:
+    telemetry = RideTelemetry(
+        trail_name="Mam Tor Loop",
+        gpx_polyline=[(53.368, -1.802)],
+        recorded_at=datetime.now(tz=UTC),
+    )
+    assert telemetry.trail_name == "Mam Tor Loop"
+    assert telemetry.recorded_at.tzinfo is not None
+
+
+def test_ride_telemetry_rejects_naive_datetime() -> None:
+    with pytest.raises(ValidationError, match="timezone-aware"):
+        RideTelemetry(
+            trail_name="Mam Tor Loop",
+            gpx_polyline=[(53.368, -1.802)],
+            recorded_at=datetime.now(),  # naive — no tz
         )

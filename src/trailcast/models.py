@@ -41,3 +41,20 @@ class ConditionsForecast(BaseModel):
         if v.tzinfo is None:
             raise ValueError("generated_at must be timezone-aware (use datetime.now(tz=UTC))")
         return v
+
+
+class RideTelemetry(BaseModel):
+    """Passive ride signal ingested from a mobile client."""
+
+    trail_name: str
+    gpx_polyline: list[LatLon]
+    recorded_at: datetime
+    rider_count: int = Field(default=1, ge=1)
+    surface_condition: str | None = None
+
+    @field_validator("recorded_at")
+    @classmethod
+    def must_be_aware(cls, v: datetime) -> datetime:
+        if v.tzinfo is None:
+            raise ValueError("recorded_at must be timezone-aware")
+        return v
