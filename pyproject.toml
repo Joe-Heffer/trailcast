@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "trailcast"
-version = "0.1.0"
+version = "0.2.0"
 description = "Predictive trail conditions for mountain biking — fuses weather, soil type, terrain geometry and ride-density signals to forecast rideability from a GPS polyline."
 readme = "README.md"
 license = { file = "LICENSE" }
