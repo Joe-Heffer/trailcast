@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.2.0](https://github.com/Joe-Heffer/trailcast/compare/v0.1.0...v0.2.0) (2026-06-29)
+
+
+### Features
+
+* **server:** add FastAPI HTTP server as [server] optional extra ([abd820f](https://github.com/Joe-Heffer/trailcast/commit/abd820fbd1c8415a425c7656966440a854c11a2b))
+* **server:** HTTP service layer — FastAPI [server] optional extra ([01f9a38](https://github.com/Joe-Heffer/trailcast/commit/01f9a382665e9818b5363bffeb8b10dc524488aa))
+
+
+### Bug Fixes
+
+* **cli:** update __init__.py import to reference renamed __main__ module ([bd54311](https://github.com/Joe-Heffer/trailcast/commit/bd543116966ae9839ce35271686dd1050bb7773f))
+
+
+### Documentation
+
+* add docs/README.md with quick start, data model, and dev guide ([3a97a1a](https://github.com/Joe-Heffer/trailcast/commit/3a97a1a2a5f684d29605cdc2f3186d3f3fee8416))
+
 ## 0.1.0 (2026-06-28)
 
 
