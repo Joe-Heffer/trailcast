@@ -53,7 +53,7 @@ server = [
 ]
 
 [project.scripts]
-trailcast = "trailcast.cli.main:app"
+trailcast = "trailcast.cli.__main__:app"
 
 [project.urls]
 Homepage = "https://github.com/joe-heffer/trailcast"
@@ -150,6 +150,7 @@ asyncio_mode = "auto"
 [tool.coverage.run]
 source = ["src/trailcast"]
 branch = true
+omit = ["**/__init__.py", "**/__main__.py"]
 
 [tool.coverage.report]
 show_missing = true
